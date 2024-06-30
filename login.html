@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+            /* สำหรับอุปกรณ์ที่มีความกว้างไม่เกิน 768px (เช่น แท็บเล็ตและโทรศัพท์) */
+            @media (max-width: 768px) {
+                /* ปรับขนาด font หรือ layout ให้สอดคล้องกับอุปกรณ์ที่มีขนาดเล็กขึ้น */
+                body {
+                    font-size: 14px;
+                }
+            }
+
+            /* สำหรับอุปกรณ์ที่มีความกว้างไม่เกิน 480px (เช่น โทรศัพท์) */
+            @media (max-width: 480px) {
+                /* ปรับการจัดหน้าให้เหมาะสมกับขนาดหน้าจอของโทรศัพท์ */
+                .container {
+                    width: 100%;
+                    padding: 10px;
+                }
+            }
+        body {
+            background-image: url(https://img2.pic.in.th/pic/inter-euro_page-0001.jpg); 
+            background-size: cover; 
+            background-position: center;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #5cb85c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+        
+    </style>
+    <script>
+        function validateEmail() {
+            var email = document.forms["loginForm"]["email"].value;
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var errorMessage = document.getElementById("error-message");
+
+            if (!emailPattern.test(email)) {
+                errorMessage.innerText = "อีเมลไม่ถูกต้อง";
+                return false;
+            }
+
+            errorMessage.innerText = ""; // Clear any previous error message
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2><center>Login</center></h2>
+        <form name="loginForm" action="login.php" method="post" onsubmit="return validateEmail()">
+            <input type="email" name="email" placeholder="Enter your email" required><br><br>
+            <input type="submit" value="Login">
+            <p id="error-message" class="error-message"></p>
+        </form>
+    </div>
+</body>
+</html>
